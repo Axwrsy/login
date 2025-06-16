@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login </title>
+  <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <main class="container">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+ <!-- login.html -->
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="senha" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+     </form>
+    </main>
+  <style>
+    .container{
+        position: relative; /* necessário para posicionamento absoluto do logo */
+        justify-content: center;
+        background-color: rgb(234, 239, 241);
+        height: 320px;
+        width: 351px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.432);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        margin-left: 460px;
+        margin-top: 80px;
+    }
+    #loginForm {
+      margin-top: 50px;
+      width: 100%;
+      text-align: center;
+    }
+
+    #loginForm input {
+      display: block;
+      margin: 15px auto;
+      width: 70%; /* vai ocupar 70% do container*/
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .logo {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 150px; /* tamanho da logo */
+      height: auto;
+    }
+    
+    #loginForm button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #b91b1b;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #loginForm button:hover {
+      background-color: #8d2f2f;
+    }
+
+    #mensagem {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+
+
+  </style>
+
+
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+  
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+  
+      const resposta = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, senha })
+      });
+  
+      const resultado = await resposta.json();
+  
+      if (resultado.success) {
+        // aq guarda o token no sessionStorage
+        sessionStorage.setItem('token', resultado.token);
+        alert('Login realizado com sucesso!');
+        // pode redirecionar para outra página se quiser:
+        // window.location.href = '/outra-pagina-protegida';
+      } else {
+        alert(resultado.message);
+      }
+    });
+  </script>
+  
+  <div id="mensagem" style="color: red; margin-top: 10px;"></div>
+</body>
+</html>
