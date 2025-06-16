@@ -1,0 +1,4 @@
+16/06/2025 16:47:03 - ana@gmail.com - SUCESSO
+16/06/2025 16:47:03 - ana@gmail.com - SUCESSO
+16/06/2025 16:47:26 - teste@gmail.com - FALHA
+16/06/2025 16:47:42 - mari@gmail.com - FALHA
