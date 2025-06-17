@@ -15,11 +15,17 @@ usuarios = {
     "carol@gmail.com": generate_password_hash("ana456")
 }
 
+# função que registra tentativas (sucesso ou fracasso) no arquivo txt
+def registrar_login(email, sucesso):
+    with open("logins.txt", "a") as arquivo:
+        data = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        status = "SUCESSO" if sucesso else "FALHA"
+        arquivo.write(f"{data} - {email} - {status}\n")
+
 # aq é onde vai direcionar pra pág de login no html 
 @app.route('/')
 def login_page():
     return render_template('login.html')
-
 
 # pega os dados enviados na requisição e valida o login
 @app.route('/login', methods=['POST'])
@@ -35,10 +41,15 @@ def login():
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
+        # registra login bem-sucedido
+        registrar_login(email, sucesso=True)
+
         return jsonify({"success": True, "token": token})
 
-    return jsonify({"success": False, "message": "Email ou senha incorretos"}), 401
+    # registra tentativa de login inválida
+    registrar_login(email, sucesso=False)
 
+    return jsonify({"success": False, "message": "Email ou senha incorretos"}), 401
 
 # parte opcional
 # 'debug=True' ativa o modo de desenvolvimento, útil durante a criação do projeto
