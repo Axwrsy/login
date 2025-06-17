@@ -7,3 +7,15 @@ AQUI VAI MOSTRAR AS TENTATIVAS DE ENTRADA, QUE VÃO DAR FALHA CASO O USER NÃO E
 16/06/2025 16:52:32 - ana@email.com - FALHA
 16/06/2025 16:52:45 - ana@gmail.com - SUCESSO
 17/06/2025 08:48:35 - ana@gmail.com - FALHA
+17/06/2025 14:50:45 - ana@gmail.com - SUCESSO
+17/06/2025 14:53:16 - ana@gmail.com - SUCESSO
+17/06/2025 14:54:29 - ana@gmail.com - SUCESSO
+17/06/2025 14:55:01 - ana@gmail.com - SUCESSO
+17/06/2025 14:55:01 - ana@gmail.com - SUCESSO
+17/06/2025 14:55:10 - ana@gmail.com - FALHA
+17/06/2025 14:55:45 - ana@gmail.com - SUCESSO
+17/06/2025 15:17:44 - ana@gmail.com - FALHA
+17/06/2025 15:17:53 - ana@gmail.com - SUCESSO
+17/06/2025 15:49:48 - ana@gmail.com - SUCESSO
+17/06/2025 15:53:34 - ana@gmail.com - FALHA
+17/06/2025 15:53:50 - ana@gmail.com - SUCESSO

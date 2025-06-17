@@ -6,12 +6,12 @@ import datetime
 app = Flask(__name__)
 
 # chave secreta usada para assinar e validar os tokens JWT
-SECRET_KEY = 's9d8f7s6df87s6df7s8d7f6s7df8s7df6s7df6s7df6sdf7s6df7sd'
+secret_key = 's9d8f7s6df87s6df7s8d7f6s7df8s7df6s7df6s7df6sdf7s6df7sd'
 
 # simula um banco de dados ja q é so pra teste
 # se nao tiver o usuário dentro do banco de dados a pessoa nao vai conseguir entrar 
 usuarios = {
-    "ana@gmail.com": generate_password_hash("ana123"),
+    "ana@gmail.com": generate_password_hash("ana#$#"),
     "carol@gmail.com": generate_password_hash("ana456")
 }
 
@@ -27,6 +27,11 @@ def registrar_login(email, sucesso):
 def login_page():
     return render_template('login.html')
 
+# página inicial que o usuário vai acessar após o login
+@app.route('/home')
+def home_page():
+    return render_template('index.html')
+
 # pega os dados enviados na requisição e valida o login
 @app.route('/login', methods=['POST'])
 def login():
@@ -39,7 +44,7 @@ def login():
             'email': email,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # expiração do token
         }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+        token = jwt.encode(payload, secret_key, algorithm='HS256')
 
         # registra login bem-sucedido
         registrar_login(email, sucesso=True)
@@ -49,7 +54,7 @@ def login():
     # registra tentativa de login inválida
     registrar_login(email, sucesso=False)
 
-    return jsonify({"success": False, "message": "Email ou senha incorretos"}), 401
+    return jsonify({"success": False, "message": "usúario não cadastrado"}), 401
 
 # parte opcional
 # 'debug=True' ativa o modo de desenvolvimento, útil durante a criação do projeto

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>início</title>
+</head>
+<body>
+ <!-- HEADER COM MENU -->
+ <header>
+    <nav class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active">Início</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#services">Operações</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main-content">
+    <div class="text-content">
+        <div class="image-content">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="imagem" />
+          </div>
+        <h2>Bem-vindo (a) {nome}</h2>
+        <p>Expandir os serviços e elevar a eficiência operacional da CPTM.</p>
+        <div class="btn-container">
+            <a href="#about" class="btn-get-started">Saiba Mais</a>
+        </div>
+    </div>
+  
+    <!-- IMAGEM À DIREITA -->
+   
+  </main>
+</body>
+  <style>
+    :root {
+    /* Fontes padrão */
+    --default-font: "Playfair Display", serif;
+    --heading-font: "Raleway", sans-serif;
+    --nav-font: "Poppins", sans-serif;
+    /* Cores gerais do site */
+    --background-color: #f9f7f4; /* tom elegante, quase creme */
+    --default-color: #333333;    /* texto geral bem escuro, mas não 100% preto */
+    --heading-color: #4a4a4a;    /* cor dos títulos */
+    --accent-color: #ffffff;     /* cor de destaque: caramelo queimado/dourado discreto */
+    --surface-color:#ca1717;  /* headder background*/
+    --contrast-color: #ffffff;
+    --nav-dropdown-background-color: #ffffff;
+    
+    /* Cores do menu de navegação */
+    --nav-dropdown-color: #a0a0a0; /* Cor dos nav no headder */
+}
+
+
+
+/*--------------------------------------------------------------
+# Estilos gerais
+--------------------------------------------------------------*/
+body {
+    margin: 0;
+    font-family: var(--default-font);
+    background-color: var(--background-color);
+    color: var(--default-color);
+}
+
+/* HEADER */
+header {
+    background-color: var(--surface-color);
+    padding: 10px 50px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    height: 34px;
+}
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 80px;
+    gap: 40px;
+}
+
+/* Texto à esquerda */
+.text-content {
+    flex: 1;
+}
+
+/* Imagem à direita */
+.image-content {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* Empurra a imagem p começo */
+}
+
+/* Estilização da imagem */
+.imagem {
+    width: 200px;
+    height: 60px;
+}
+.navmenu a {
+    color: var(--nav-color);
+    font-family: var(--nav-font);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.navmenu a:hover {
+    color: var(--nav-hover-color);
+}
+
+
+.navmenu ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navmenu li {
+    flex: 1;
+    margin-top: 12px;
+ 
+}
+
+.navmenu li:first-child {
+    text-align: left;
+}
+
+.navmenu li:nth-child(2) {
+    text-align: center;
+}
+
+.navmenu li:last-child {
+    text-align: right;
+}
+
+.navmenu a {
+    color: var(--contrast-color);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500px;
+    text-decoration: none;
+}
+.navmenu a:hover {
+   color: var(--nav-dropdown-color);
+}
+
+/* LAYOUT PRINCIPAL */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 80px;
+    gap: 40px;
+}
+
+
+.btn-container {
+    display: flex;
+    margin-top: 15px;        /* Espaço entre o parágrafo e o botão */
+    text-align: center;
+    height: 40px;
+}
+.btn-get-started {
+    background-color: var( --surface-color);
+    color: var(--contrast-color);
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-left: 34;
+    
+}
+.btn-get-started:hover{
+    transform: translateY(-2px);
+}
+  </style>
+
+
+</html>
